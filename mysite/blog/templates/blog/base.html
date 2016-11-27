@@ -1,12 +1,16 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<title>Abi's Frankenstein</title>
 	<meta charset="utf-8" />
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/>
-	<link rel="stylesheet" href="{% static 'css/minor.css' %}" type = "text/css"/>
+	
+	<!--<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type = "text/css"/>-->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{% static 'css/basic.css' %}" />
+	<link rel="stylesheet" href="{% static 'background.css' %}" />
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
 	
 	<style type="text/css">
@@ -19,31 +23,35 @@
 
 <body class="body">
 	<div class="container-fluid" style="min-height: 95%;">
-		<div class="row">
+		<div class="row abi-test">
 			<div class="col-sm-2">
 				<br>
-				<center>
-					<img src="{% static 'img/first.jpg' %}" class="img-responsive" style='max-height: 100px;' alt="face">
-				</center>
+				<a href="{% url 'post_list' %}"><img src="{% static 'img/first.jpg' %}" class="img-responsive" style='max-height: 100px;' alt="face"></a>
 			</div>
 			<div class="col-sm-10">
-				<br>
-				<center> <h1>Abi's Frankenstein</h1> </center>
+					<br>
+					<center> <img src="{% static 'img/top.png' %}" class="img-responsive" style='max-width: 500px;' alt="face"> </center>
 			</div>
 		</div>
 		<hr>
 		<div class="page-header">
 			{% if user.is_authenticated %}
-				<a href="{% url 'post_new' %}" class="top-menu"> <span class="glyphicon glyphicon-plus"></span></a>
+				<a href="{% url 'post_new' %}" class="top-menu"> <span class="glyphicon glyphicon-plus">Add</span></a>
+				<a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span>Draft</a>
+				<p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+			{% else %}
+            	<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
 			{% endif %}
 		</div>
-		<div class="row">
+		<div class="row pattern-bg">
 			<div class="col-sm-2">
 				
 			</div>
 			<div class="col-sm-8">
-				{% block content %}
-				{% endblock %}
+				<div class="backdrop">
+					{% block content %}
+					{% endblock %}
+				</div>
 			</div>
 			<div class="col-sm-2">
 				

@@ -1,0 +1,7 @@
+{% block extend %}
+	<form method="POST" class="post-form">{% csrf_token %}
+		{{ form.as_p }}
+	</form>
+	
+	
+{% endblock %}

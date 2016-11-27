@@ -1,0 +1,18 @@
+.pattern-bg {
+	background: url('img/post-back.png');
+}
+.post-back {
+    background-color: white !important;
+    box-shadow: 0 2px 10px #ccc;
+    padding: 18px;
+}
+
+.post p {
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.abi-test {
+	background: url('img/backdrop.jpg') repeat center;
+}
+
